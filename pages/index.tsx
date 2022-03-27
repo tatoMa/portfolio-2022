@@ -1,58 +1,460 @@
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import { getAllPosts } from '../lib/api'
-import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
-import Post from '../types/post'
+import { ChatAltIcon } from "@heroicons/react/solid";
+import { ChevronDoubleDownIcon } from "@heroicons/react/solid";
+import Head from "next/head";
+import Link from "next/link";
+import useOnScrolled from "../hooks/useOnScrolled";
+import Plx from "react-plx";
+import cityPic from "../public/assets/img/pexel-room.jpg";
+import Image from "next/image";
 
-type Props = {
-  allPosts: Post[]
-}
+type Props = {};
 
-const Index = ({ allPosts }: Props) => {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+const Index = () => {
+  const galaxy = [
+    {
+      start: 500,
+      end: 1500,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 5,
+          property: "scale",
+        },
+        {
+          startValue: 1,
+          endValue: 0.0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const earth = [
+    {
+      start: 1350,
+      end: 2200,
+      properties: [
+        {
+          startValue: 0.05,
+          endValue: 1,
+          property: "scale",
+        },
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+      ],
+    },
+    {
+      start: 3000,
+      end: 3600,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 5,
+          property: "scale",
+        },
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const earthText = [
+    {
+      start: 1900,
+      end: 2200,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+      ],
+    },
+    {
+      start: 3000,
+      end: 3200,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const cloud = [
+    {
+      start: 3000,
+      end: 3600,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+      ],
+    },
+    {
+      start: 3600,
+      end: 3900,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const city = [
+    {
+      start: 3500,
+      end: 4500,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+        {
+          startValue: 1,
+          endValue: 1.5,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 5500,
+      end: 6500,
+      properties: [
+        {
+          startValue: 1.5,
+          endValue: 10,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 6100,
+      end: 6500,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const cityText = [
+    {
+      start: 4400,
+      end: 4600,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+      ],
+    },
+    {
+      start: 5500,
+      end: 5700,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const room = [
+    {
+      start: 6000,
+      end: 6700,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+        {
+          startValue: 0.7,
+          endValue: 1.2,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 7500,
+      end: 8200,
+      properties: [
+        {
+          startValue: 1.2,
+          endValue: 10,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 7900,
+      end: 8200,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const roomText = [
+    {
+      start: 6500,
+      end: 6700,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+        {
+          startValue: 0.7,
+          endValue: 1,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 7900,
+      end: 8200,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+        {
+          startValue: 1,
+          endValue: 2.5,
+          property: "scale",
+        },
+      ],
+    },
+  ];
+  const scrolled = useOnScrolled();
+
   return (
     <>
-      <Layout>
-        <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
-        <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
+      <Head>
+        <title>Portfolio</title>
+      </Head>
+      <header
+        className={`bg-[#000813] z-10 fixed left-0 top-0 w-full h-full duration-500 overflow-hidden ${
+          scrolled && "h-16"
+        }`}
+      >
+        <nav className="flex justify-between items-center m-auto max-w-7xl h-16 z-50">
+          <button
+            className={`logo text-3xl font-Poppins tracking-wider cursor-pointer px-4 py-1 -ml-40 hover:text-sky-500 rounded-md duration-200 opacity-0 ${
+              scrolled && "opacity-100 ml-0"
+            }`}
+          >
+            Tato
+          </button>
+          <ul
+            className={`flex gap-4 text-lg duration-500 translate-x-20 ${
+              scrolled && " -translate-x-1"
+            }`}
+          >
+            <li className="text-gray-400 px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+            </li>
+            <li className="px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
+              <Link href="/blogs">
+                <a>Blog</a>
+              </Link>
+            </li>
+            <li className="px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
+              <Link href="/">
+                <a>About</a>
+              </Link>
+            </li>
+            <li
+              className={`group cursor-pointer opacity-0 px-6 py-2 rounded-md bg-sky-600 hover:text-sky-700 hover:bg-white duration-300 ${
+                scrolled && "opacity-100"
+              }`}
+            >
+              <Link href="/">
+                <a>
+                  <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
+                  Contact me
+                </a>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <section
+          className={`flex flex-col items-center justify-center h-full pb-20 duration-500 ${
+            scrolled && " opacity-0 pointer-events-none"
+          }`}
+        >
+          <h1 className="text-4xl md:text-6xl text-center leading-normal md:leading-normal font-Poppins w-full px-12">
+            My name is Tato. <br /> I design/develop modern web app by my ❤️
+          </h1>
+          <button className="group flex items-center justify-center px-6 py-2 mt-24 rounded-md bg-sky-600 hover:text-sky-700 hover:bg-white duration-300">
+            <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
+            <span>Contact me</span>
+          </button>
+          <ChevronDoubleDownIcon className="absolute w-8 h-8 bottom-8 animate-bounce" />
+        </section>
+      </header>
+      <div className="bg-[#000813]  h-[5000vh] w-full">
+        <Plx parallaxData={galaxy} className="fixed top-0 left-0 w-full h-full">
+          <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            data-video-player-target="player"
+            className="h-full w-full object-cover"
+          >
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/005/160/780/mp4/flying-star-fields-through-hyper-space-warp-free-video.mp4"
+              type="video/mp4"
             />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
-      </Layout>
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/005/160/780/flying-star-fields-through-hyper-space-warp-free-video.webm"
+              type="video/webm"
+            />
+          </video>
+          <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center">
+            <div className=" text-6xl text-center leading-normal mx-8">
+              Black holes are better understood than the human brain
+            </div>
+          </div>
+        </Plx>
+        <Plx
+          parallaxData={earth}
+          className="fixed top-0 left-0 w-full h-full scale-0"
+        >
+          <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            data-video-player-target="player"
+            className="h-full w-full object-cover"
+          >
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/001/623/456/mp4/the-planet-earth-rotates-in-space-free-video.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/001/623/456/the-planet-earth-rotates-in-space-free-video.webm"
+              type="video/webm"
+            />
+          </video>
+        </Plx>
+        <Plx
+          parallaxData={earthText}
+          className="fixed top-0 left-0 w-full h-full opacity-0"
+        >
+          <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10">
+            <div className=" text-6xl text-center leading-normal mx-8">
+              When you trying to enter it
+            </div>
+          </div>
+        </Plx>
+        <Plx
+          parallaxData={cloud}
+          className="fixed top-0 left-0 w-full h-full opacity-0 mix-blend-screen"
+        >
+          <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            data-video-player-target="player"
+            className="h-full w-full object-cover"
+          >
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/001/940/546/mp4/atmospheric-white-smoke-fog-effect-from-left-to-right-free-video.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/001/940/546/atmospheric-white-smoke-fog-effect-from-left-to-right-free-video.webm"
+              type="video/webm"
+            />
+          </video>
+        </Plx>
+        <Plx
+          parallaxData={city}
+          className="fixed top-0 left-0 w-full h-full opacity-0 mix-blend-screen scale-1"
+        >
+          <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            data-video-player-target="player"
+            className="h-full w-full object-cover"
+          >
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/003/399/576/mp4/beautiful-building-and-architecture-around-hong-kong-city-skyline-free-video.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/003/399/576/beautiful-building-and-architecture-around-hong-kong-city-skyline-free-video.webm"
+              type="video/webm"
+            />
+          </video>
+        </Plx>
+        <Plx
+          parallaxData={cityText}
+          className="fixed top-0 left-0 w-full h-full opacity-0"
+        >
+          <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10">
+            <div className=" text-6xl text-center leading-normal mx-8">
+              You will find out ...
+            </div>
+          </div>
+        </Plx>
+        <Plx
+          parallaxData={room}
+          className="fixed top-0 left-0 w-full h-full opacity-0 scale-75 origin-right"
+        >
+          <Image
+            src={cityPic}
+            alt=""
+            className="h-full w-full object-cover z-10"
+          />
+        </Plx>
+        <Plx
+          parallaxData={roomText}
+          className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
+        >
+          <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
+            <div className=" text-6xl text-center leading-normal mx-8">
+              Unlimited possibility
+            </div>
+          </div>
+        </Plx>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
-
-  return {
-    props: { allPosts },
-  }
-}
+  return { props: { page: "index" } };
+};
