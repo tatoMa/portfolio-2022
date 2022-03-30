@@ -12,7 +12,18 @@ type Props = {};
 const Index = () => {
   const galaxy = [
     {
-      start: 500,
+      start: 300,
+      end: 800,
+      properties: [
+        {
+          startValue: 0.75,
+          endValue: 1,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 800,
       end: 1500,
       properties: [
         {
@@ -71,6 +82,17 @@ const Index = () => {
           startValue: 0,
           endValue: 1,
           property: "opacity",
+        },
+      ],
+    },
+    {
+      start: 1900,
+      end: 3000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: -50,
+          property: "translateY",
         },
       ],
     },
@@ -163,8 +185,19 @@ const Index = () => {
       ],
     },
     {
+      start: 4500,
+      end: 5600,
+      properties: [
+        {
+          startValue: 0,
+          endValue: -50,
+          property: "translateY",
+        },
+      ],
+    },
+    {
       start: 5500,
-      end: 5700,
+      end: 5900,
       properties: [
         {
           startValue: 1,
@@ -197,7 +230,7 @@ const Index = () => {
       properties: [
         {
           startValue: 1.2,
-          endValue: 10,
+          endValue: 7,
           property: "scale",
         },
       ],
@@ -209,7 +242,7 @@ const Index = () => {
         {
           startValue: 1,
           endValue: 0,
-          property: "opacity",
+          property: "brightness",
         },
       ],
     },
@@ -232,6 +265,17 @@ const Index = () => {
       ],
     },
     {
+      start: 6500,
+      end: 7900,
+      properties: [
+        {
+          startValue: 0,
+          endValue: -50,
+          property: "translateY",
+        },
+      ],
+    },
+    {
       start: 7900,
       end: 8200,
       properties: [
@@ -248,6 +292,94 @@ const Index = () => {
       ],
     },
   ];
+  const computer = [
+    {
+      start: 8100,
+      end: 9000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+      ],
+    },
+  ];
+  const ComputerText1 = [
+    {
+      start: 8300,
+      end: 9000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+        {
+          startValue: 0.7,
+          endValue: 1,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 8600,
+      end: 9000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: -50,
+          property: "translateY",
+        },
+      ],
+    },
+    {
+      start: 9800,
+      end: 10500,
+      properties: [
+        {
+          startValue: 1,
+          endValue: 0,
+          property: "opacity",
+        },
+        {
+          startValue: 1,
+          endValue: 2.5,
+          property: "scale",
+        },
+      ],
+    },
+  ];
+  const ComputerText2 = [
+    {
+      start: 10600,
+      end: 12000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: 1,
+          property: "opacity",
+        },
+        {
+          startValue: 0.7,
+          endValue: 1,
+          property: "scale",
+        },
+      ],
+    },
+    {
+      start: 8600,
+      end: 9000,
+      properties: [
+        {
+          startValue: 0,
+          endValue: -50,
+          property: "translateY",
+        },
+      ],
+    },
+  ];
+
   const scrolled = useOnScrolled();
 
   return (
@@ -317,8 +449,11 @@ const Index = () => {
           <ChevronDoubleDownIcon className="absolute w-8 h-8 bottom-8 animate-bounce" />
         </section>
       </header>
-      <div className="bg-[#000813]  h-[5000vh] w-full">
-        <Plx parallaxData={galaxy} className="fixed top-0 left-0 w-full h-full">
+      <div className="bg-[#000813]  h-[13000px] w-full ">
+        <Plx
+          parallaxData={galaxy}
+          className="fixed top-0 left-0 w-full h-full scale-75"
+        >
           <video
             autoPlay
             playsInline
@@ -430,22 +565,81 @@ const Index = () => {
         </Plx>
         <Plx
           parallaxData={room}
-          className="fixed top-0 left-0 w-full h-full opacity-0 scale-75 origin-right"
+          className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
         >
-          <Image
-            src={cityPic}
-            alt=""
-            className="h-full w-full object-cover z-10"
-          />
+          <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            data-video-player-target="player"
+            className="h-full w-full object-cover"
+          >
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/002/014/619/mp4/computer-room-mock-up-scene-office-animation-free-video.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/002/014/619/computer-room-mock-up-scene-office-animation-free-video.webm"
+              type="video/webm"
+            />
+          </video>
         </Plx>
         <Plx
           parallaxData={roomText}
           className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
         >
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
-            <div className=" text-6xl text-center leading-normal mx-8">
+            <div className=" text-6xl text-center leading-normal mx-8 px-4 text-gray-200 bg-black/70">
               Unlimited possibility
             </div>
+          </div>
+        </Plx>
+        <Plx
+          parallaxData={computer}
+          className="fixed top-0 left-0 w-full h-full opacity-0"
+        >
+          <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            data-video-player-target="player"
+            className="h-full w-full object-cover"
+          >
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/005/166/520/mp4/man-hand-with-smartphone-and-futuristic-virtual-3d-interface-free-video.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://static.vecteezy.com/system/resources/previews/005/166/520/man-hand-with-smartphone-and-futuristic-virtual-3d-interface-free-video.webm"
+              type="video/webm"
+            />
+          </video>
+        </Plx>
+        <Plx
+          parallaxData={ComputerText1}
+          className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
+        >
+          <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
+            <div className=" text-6xl text-center leading-normal mx-8 px-4 ">
+              Work with me. <br /> We find the possibilities{" "}
+              <span className=" text-sky-400">together</span>.
+            </div>
+          </div>
+        </Plx>
+        <Plx
+          parallaxData={ComputerText2}
+          className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
+        >
+          <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
+            <div className=" text-6xl text-center leading-normal mx-8 px-4 ">
+              <span className=" text-sky-400">Contact me</span> <br />I know you
+              will.
+            </div>
+          </div>
+          <div className=" absolute right-2 bottom-0 text-xs">
+            All videos are licensed by Vecteezy
           </div>
         </Plx>
       </div>
