@@ -444,10 +444,10 @@ const Index = () => {
             <br /> I{" "}
             <span className=" overflow-hidden inline-block relative h-12">
               <span className=" text-transparent select-none"> develop </span>
-              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite] text-sky-400 ml-4">
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-1s] text-sky-400 ml-4">
                 design
               </span>
-              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_3s] text-sky-400">
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-4s] text-sky-400">
                 develop
               </span>
             </span>{" "}
