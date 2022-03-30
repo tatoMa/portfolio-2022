@@ -1,7 +1,14 @@
 module.exports = {
   content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        updown: {
+          "0%": { transform: "translateY(75%)" },
+          "100%": { transform: "translateY(-75%)" },
+        },
+      },
+    },
     fontFamily: {
       Poppins: ["Poppins", "sans-serif"],
     },

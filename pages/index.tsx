@@ -440,7 +440,18 @@ const Index = () => {
           }`}
         >
           <h1 className="text-4xl md:text-6xl text-center leading-normal md:leading-normal font-Poppins w-full px-12">
-            My name is Tato. <br /> I design/develop modern web app by my ❤️
+            My name is <span className=" text-sky-400 font-medium">Tato</span>
+            <br /> I{" "}
+            <span className=" overflow-hidden inline-block relative h-12">
+              <span className=" text-transparent select-none"> develop </span>
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite] text-sky-400 ml-4">
+                design
+              </span>
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_3s] text-sky-400">
+                develop
+              </span>
+            </span>{" "}
+            modern web app by ❤️
           </h1>
           <button className="group flex items-center justify-center px-6 py-2 mt-24 rounded-md bg-sky-600 hover:text-sky-700 hover:bg-white duration-300">
             <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
