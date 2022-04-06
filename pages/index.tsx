@@ -20,8 +20,8 @@ const Index = () => {
       end: 800,
       properties: [
         {
-          startValue: 0.75,
-          endValue: 1,
+          startValue: 1,
+          endValue: 1.2,
           property: "scale",
         },
       ],
@@ -392,34 +392,39 @@ const Index = () => {
         <title>Portfolio</title>
       </Head>
       <header
-        className={`bg-zinc-800 z-10 fixed left-0 top-0 w-full h-full duration-500 overflow-hidden ${
-          scrolled && "h-16"
+        className={`bg-zinc-800 z-10 fixed left-0 top-0 bottom-0 w-full duration-500 overflow-hidden ${
+          scrolled && "bottom-[calc(100%-4rem)]"
         }`}
       >
         <Navigation></Navigation>
         <section
           className={`flex flex-col items-center justify-center h-full pb-20 duration-500 ${
-            scrolled && " opacity-0 pointer-events-none"
+            scrolled && " opacity-0 pointer-events-none h-0"
           }`}
         >
           <h1 className="text-4xl md:text-6xl text-center leading-normal md:leading-normal font-Poppins w-full px-12">
             My name is <span className=" text-sky-400 font-medium">Tato</span>
             <br /> I{" "}
-            <span className=" overflow-hidden inline-block relative h-12">
+            <span className=" overflow-hidden inline-block relative h-12 -bottom-2 md:-bottom-1">
               <span className=" text-transparent select-none"> develop </span>
-              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-1s] text-sky-400 ml-4">
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-1s] text-sky-400 ml-2">
                 design
               </span>
-              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-4s] text-sky-400">
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-5s] text-green-400 ml-3">
+                create
+              </span>
+              <span className="absolute left-0 bottom-0 animate-[updown_linear_6s_infinite_-9s] text-amber-400">
                 develop
               </span>
             </span>{" "}
             modern web app by ❤️
           </h1>
-          <button className="group flex items-center justify-center px-6 py-2 mt-24 rounded-md bg-sky-600 hover:text-sky-700 hover:bg-white duration-300">
-            <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
-            <span>Contact me</span>
-          </button>
+          <Link href="/contact">
+            <a className="group flex items-center justify-center px-6 py-2 mt-24 rounded-md bg-sky-600 hover:text-sky-700 hover:bg-white duration-300">
+              <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
+              <span>Contact me</span>
+            </a>
+          </Link>
           <ChevronDoubleDownIcon
             className="absolute w-11 h-11 bottom-8 animate-bounce cursor-pointer p-2"
             onClick={() => {
@@ -429,10 +434,7 @@ const Index = () => {
         </section>
       </header>
       <div className="bg-[#000813]  h-[13000px] w-full ">
-        <Plx
-          parallaxData={galaxy}
-          className="fixed top-0 left-0 w-full h-full scale-75"
-        >
+        <Plx parallaxData={galaxy} className="fixed top-0 left-0 w-full h-full">
           <video
             autoPlay
             playsInline
@@ -451,7 +453,7 @@ const Index = () => {
             />
           </video>
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center">
-            <div className=" text-6xl text-center leading-normal mx-8">
+            <div className=" text-5xl md:text-6xl text-center md:leading-normal leading-normal mx-8">
               Black holes are better understood than the human brain
             </div>
           </div>
@@ -483,7 +485,7 @@ const Index = () => {
           className="fixed top-0 left-0 w-full h-full opacity-0"
         >
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10">
-            <div className=" text-6xl text-center leading-normal mx-8">
+            <div className=" text-5xl md:text-6xl text-center md:leading-normal leading-normal mx-8">
               When you trying to enter it
             </div>
           </div>
@@ -537,7 +539,7 @@ const Index = () => {
           className="fixed top-0 left-0 w-full h-full opacity-0"
         >
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10">
-            <div className=" text-6xl text-center leading-normal mx-8">
+            <div className=" text-5xl md:text-6xl text-center md:leading-normal leading-normal mx-8">
               You will find out ...
             </div>
           </div>
@@ -569,7 +571,7 @@ const Index = () => {
           className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
         >
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
-            <div className=" text-6xl text-center leading-normal mx-8 px-4 text-gray-200 bg-black/70">
+            <div className=" text-5xl md:text-6xl text-center md:leading-normal leading-normal mx-8 px-4 text-gray-200 bg-black/70">
               Unlimited possibility
             </div>
           </div>
@@ -601,7 +603,7 @@ const Index = () => {
           className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
         >
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
-            <div className=" text-6xl text-center leading-normal mx-8 px-4 ">
+            <div className=" text-5xl md:text-6xl text-center md:leading-normal leading-normal mx-8 px-4 ">
               Work with me. <br /> We find the possibilities{" "}
               <span className=" text-sky-400">together</span>.
             </div>
@@ -612,9 +614,16 @@ const Index = () => {
           className="fixed top-0 left-0 w-full h-full opacity-0 scale-75"
         >
           <div className="w-full h-full fixed top-0 left-0 flex items-center justify-center z-10 ">
-            <div className=" text-6xl text-center leading-normal mx-8 px-4 ">
-              <span className=" text-sky-400">Contact me</span> <br />I know you
-              will.
+            <div className=" text-4xl md:text-6xl text-center md:leading-normal leading-normal mx-8 px-4 ">
+              <Link href="/contact">
+                <div className="mb-4 group cursor-pointer px-4 py-0 md:px-6 md:py-1 rounded-md bg-sky-600 hover:text-sky-700 hover:bg-white duration-300">
+                  <a>
+                    <ChatAltIcon className=" -translate-y-1 w-9 md:w-14 h-9 md:h-14 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
+                    Contact me
+                  </a>
+                </div>
+              </Link>
+              I know you will.
             </div>
           </div>
           <div className=" absolute right-2 bottom-0 text-xs">

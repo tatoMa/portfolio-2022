@@ -4,13 +4,8 @@ module.exports = {
     extend: {
       keyframes: {
         updown: {
-          "0%": { transform: "translateY(75%)" },
-          "100%": { transform: "translateY(-75%)" },
-        },
-        updown2: {
-          "50%": { transform: "translateY(75%)" },
-          "0%": { transform: "translateY(0%)" },
-          "100%": { transform: "translateY(-75%)" },
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(-100%)" },
         },
       },
     },

@@ -1,7 +1,7 @@
 import { ChatAltIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import useOnScrolled from "../hooks/useOnScrolled";
-import { MenuIcon } from "@heroicons/react/solid";
+import { MenuIcon, XIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 
 const navigation = () => {
@@ -41,7 +41,7 @@ const navigation = () => {
             scrolled && "opacity-100"
           }`}
         >
-          <Link href="/">
+          <Link href="/contact">
             <a>
               <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
               Contact me
@@ -50,17 +50,20 @@ const navigation = () => {
         </li>
       </ul>
       <div className="absolute right-1 top-1 block md:hidden">
-        <MenuIcon
-          className="w-14 h-14 p-2 cursor-pointer hover:text-zinc-400 active:text-zinc-400"
-          onClick={() => setMenuOpened(!menuOpened)}
-        ></MenuIcon>
+        <a onClick={() => setMenuOpened(!menuOpened)}>
+          {menuOpened ? (
+            <XIcon className="w-14 h-14 p-2 cursor-pointer hover:bg-zinc-400 active:bg-zinc-400"></XIcon>
+          ) : (
+            <MenuIcon className="w-14 h-14 p-2 cursor-pointer hover:bg-zinc-400 active:bg-zinc-400"></MenuIcon>
+          )}
+        </a>
       </div>
       {menuOpened && (
         <div className="fixed top-16 left-0 w-full h-full bg-zinc-800 z-50 pb-16">
           <ul className="flex flex-col items-center justify-center h-full">
             <li className=" w-full h-20 text-center hover:bg-zinc-500 active:bg-zinc-500 flex justify-center items-center text-4xl">
               <Link href="/">
-                <a>Home</a>
+                <a onClick={() => setMenuOpened(false)}>Home</a>
               </Link>
             </li>
             <li className=" w-full h-20 text-center hover:bg-zinc-500 active:bg-zinc-500 flex justify-center items-center text-4xl">
@@ -74,7 +77,7 @@ const navigation = () => {
               </Link>
             </li>
             <li className=" w-full h-20 text-center hover:bg-zinc-500 active:bg-zinc-500 flex justify-center items-center text-4xl">
-              <Link href="/">
+              <Link href="/contact">
                 <a>Contact me</a>
               </Link>
             </li>
