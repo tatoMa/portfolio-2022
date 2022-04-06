@@ -1,5 +1,8 @@
 import { ChatAltIcon } from "@heroicons/react/solid";
-import { ChevronDoubleDownIcon } from "@heroicons/react/solid";
+import {
+  ChevronDoubleDownIcon,
+  ChevronDoubleUpIcon,
+} from "@heroicons/react/solid";
 import Head from "next/head";
 import Link from "next/link";
 import useOnScrolled from "../hooks/useOnScrolled";
@@ -457,7 +460,12 @@ const Index = () => {
             <ChatAltIcon className="w-6 h-6 inline-block mr-2 group-hover:-rotate-[25deg] group-hover:scale-150 duration-300" />
             <span>Contact me</span>
           </button>
-          <ChevronDoubleDownIcon className="absolute w-8 h-8 bottom-8 animate-bounce" />
+          <ChevronDoubleDownIcon
+            className="absolute w-11 h-11 bottom-8 animate-bounce cursor-pointer p-2"
+            onClick={() => {
+              window.scrollTo(0, 10);
+            }}
+          />
         </section>
       </header>
       <div className="bg-[#000813]  h-[13000px] w-full ">
@@ -652,6 +660,12 @@ const Index = () => {
           <div className=" absolute right-2 bottom-0 text-xs">
             All videos are licensed by Vecteezy
           </div>
+          <ChevronDoubleUpIcon
+            className="absolute z-20 left-1/2 -translate-x-1/2 w-11 h-11 bottom-8 animate-bounce cursor-pointer p-2"
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          />
         </Plx>
       </div>
     </>
