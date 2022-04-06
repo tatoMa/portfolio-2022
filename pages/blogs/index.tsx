@@ -44,12 +44,12 @@ const Index = ({ allPosts }: Props) => {
                   scrolled && " -translate-x-1"
                 }`}
               >
-                <li className="text-gray-400 px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
+                <li className=" px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
                   <Link href="/">
                     <a>Home</a>
                   </Link>
                 </li>
-                <li className="px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
+                <li className="text-gray-400 px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
                   <Link href="/blogs">
                     <a>Blog</a>
                   </Link>
