@@ -388,7 +388,7 @@ const Index = () => {
         <title>Portfolio</title>
       </Head>
       <header
-        className={`bg-[#000813] z-10 fixed left-0 top-0 w-full h-full duration-500 overflow-hidden ${
+        className={`bg-zinc-800 z-10 fixed left-0 top-0 w-full h-full duration-500 overflow-hidden ${
           scrolled && "h-16"
         }`}
       >
