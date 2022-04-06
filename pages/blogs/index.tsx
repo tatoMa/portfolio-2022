@@ -55,7 +55,7 @@ const Index = ({ allPosts }: Props) => {
                   </Link>
                 </li>
                 <li className="px-3 py-2 cursor-pointer border-b-2 border-transparent hover:border-sky-500 duration-150">
-                  <Link href="/">
+                  <Link href="/about">
                     <a>About</a>
                   </Link>
                 </li>
